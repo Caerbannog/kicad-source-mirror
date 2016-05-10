@@ -728,6 +728,12 @@ void PCB_BASE_FRAME::UpdateStatusBar()
 
         // We already decided the formatter above
         line.Printf( locformatter, dXpos, dYpos, hypot( dXpos, dYpos ) );
+        
+        if (screen->m_O_Curseur.x == 0 && screen->m_O_Curseur.y == 0)
+        {
+            // The relative origin has not been set, show a hint instead of repeating the same absolute values.
+            line = wxT( "Press [space] to measure a distance" );
+        }
         SetStatusText( line, 3 );
     }
 }
